@@ -36,6 +36,8 @@
 #include "Common.hpp"
 
 #include <px4_platform_common/module_params.h>
+#include <uORB/Publication.hpp>
+#include <uORB/topics/health_report.h>
 
 class HealthAndArmingChecks : public ModuleParams
 {
@@ -62,6 +64,8 @@ private:
 	Context _context;
 	Report _reporter;
 	vehicle_status_s &_status;
+
+	uORB::Publication<health_report_s> _health_report_pub{ORB_ID(health_report)};
 
 	// all checks
 	HealthAndArmingCheckBase *_checks[10] = {
