@@ -64,6 +64,7 @@ private:
 	Context _context;
 	Report _reporter;
 	vehicle_status_s &_status;
+	orb_advert_t _mavlink_log_pub{nullptr};
 
 	uORB::Publication<health_report_s> _health_report_pub{ORB_ID(health_report)};
 
